@@ -6,7 +6,7 @@ export default function ConfigurationDocPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold">구성 및 설정</h1>
         <p className="text-muted-foreground">
-          Tailwind v4, shadcn/ui, 다크모드, 경로 별칭 설정 위치를 정리했습니다.
+          Tailwind v4, shadcn/ui, 경로 별칭 설정 위치를 정리했습니다.
         </p>
       </div>
 
@@ -46,31 +46,6 @@ export default function ConfigurationDocPage() {
 }
 `}
         />
-      </section>
-
-      <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">다크모드</h2>
-        <p className="text-sm text-muted-foreground">
-          <code className="rounded bg-muted px-1.5 py-0.5">
-            next-themes
-          </code>
-          를 감싼{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5">
-            src/components/theme-provider.tsx
-          </code>
-          가{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5">
-            attribute=&quot;class&quot;
-          </code>{" "}
-          로 layout.tsx에 적용되어 있습니다.{" "}
-          <code className="rounded bg-muted px-1.5 py-0.5">
-            &lt;html&gt;
-          </code>
-          에는 <code className="rounded bg-muted px-1.5 py-0.5">
-            suppressHydrationWarning
-          </code>
-          이 필수입니다.
-        </p>
       </section>
 
       <section className="flex flex-col gap-3">
