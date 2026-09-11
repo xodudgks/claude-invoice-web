@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { CodeBlock } from "@/components/examples/code-block"
+import { CodeBlock } from "@/components/code-block"
 import {
   Card,
   CardContent,

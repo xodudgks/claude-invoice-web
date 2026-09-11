@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query"
 
-import { CodeBlock } from "@/components/examples/code-block"
+import { CodeBlock } from "@/components/code-block"
 import { Button } from "@/components/ui/button"
 import {
   Card,
