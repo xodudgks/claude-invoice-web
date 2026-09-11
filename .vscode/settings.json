@@ -1,0 +1,5 @@
+{
+  // shadcn/ui의 data-open/data-closed 상태 클래스는 서로 배타적으로만 적용되지만,
+  // Tailwind CSS IntelliSense의 충돌 검사기가 이를 인식하지 못해 오탐(false positive)을 표시함
+  "tailwindCSS.lint.cssConflict": "ignore"
+}
