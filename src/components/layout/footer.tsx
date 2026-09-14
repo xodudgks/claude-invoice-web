@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="border-t px-6 py-6">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
-        <p>© {new Date().getFullYear()} Next.js Starter Kit</p>
+        <p>© {new Date().getFullYear()} 견적서 웹뷰어</p>
         <nav className="flex items-center gap-4">
           {navItems.map((item) => (
             <Link

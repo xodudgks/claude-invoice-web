@@ -10,7 +10,7 @@ export function Header() {
     <header className="border-b">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="text-lg font-semibold">
-          Next.js Starter Kit
+          견적서 웹뷰어
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
