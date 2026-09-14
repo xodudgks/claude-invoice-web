@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 견적서 웹뷰어
 
-## Getting Started
+노션(Notion)에 입력한 견적서 데이터를 클라이언트가 별도 로그인 없이 웹에서 확인하고 다운로드할 수 있게 해주는 서비스입니다.
 
-First, run the development server:
+## 소개 및 목적
+
+견적서를 발행하는 프리랜서/소규모 대행사가 노션 데이터베이스에 입력해둔 견적서를 그대로 동기화해 웹에 게시하고, 공유 링크 하나로 클라이언트에게 전달할 수 있도록 합니다. 클라이언트는 별도 가입/로그인 없이 링크만으로 견적 내용을 확인하고 파일로 다운로드할 수 있습니다.
+
+자세한 기획 배경, 사용자 여정, 데이터 모델 등은 [`docs/PRD.md`](./docs/PRD.md)를 참고하세요.
+
+## 범위 및 사용자
+
+- **발행자**: 견적서를 발행하는 프리랜서/소규모 대행사. 로그인 후 노션 연동을 설정하고, 견적서를 동기화해 공유 링크를 생성합니다.
+- **열람자(클라이언트)**: 발행자로부터 공유 링크를 전달받아 로그인 없이 견적 내용을 확인/다운로드합니다.
+
+## 주요 페이지
+
+| 페이지 | 설명 | 인증 |
+|---|---|---|
+| 로그인 페이지 | 발행자 이메일/비밀번호 로그인 | 불필요 |
+| 회원가입 페이지 | 발행자 계정 생성 | 불필요 |
+| 대시보드 페이지 | 견적서 목록 확인, 노션 동기화, 공유 링크 생성 | 필요 |
+| 노션 연동 설정 페이지 | 노션 연동 키/데이터베이스 ID 등록 | 필요 |
+| 견적서 공유 페이지 | 공유 링크로 견적 내용 열람 및 다운로드 | 불필요 |
+
+## 핵심 기능
+
+- **F001** 견적서 동기화 — 노션 데이터베이스의 견적서 데이터를 불러와 반영
+- **F002** 견적서 상세 열람 — 공유 링크로 품목/단가/수량/합계 확인
+- **F003** 견적서 다운로드 — 웹에서 확인한 견적서를 파일로 다운로드
+- **F004** 공유 링크 생성 — 견적서별 고유 공유 링크 생성/복사
+- **F010** 기본 인증 — 발행자 회원가입/로그인/로그아웃
+- **F011** 노션 연동 설정 — 발행자의 노션 데이터베이스 연동 정보 등록
+
+MVP 이후 범위(열람 이력, 코멘트/승인, 다중 계정, 커스텀 도메인, 템플릿 커스터마이징, 링크 비밀번호/만료 등)는 `docs/PRD.md`의 "MVP 이후 기능" 절을 참고하세요.
+
+## 기술 스택
+
+- **프레임워크**: Next.js 15 (App Router), React 19, TypeScript
+- **스타일링/UI**: Tailwind CSS v4, shadcn/ui (Base UI 기반), Lucide React
+- **폼/검증**: React Hook Form, Zod
+- **상태 관리**: Zustand
+- **백엔드/데이터**: Supabase(인증/DB), PostgreSQL, Notion API
+- **배포**: Vercel
+
+## 시작하기
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # 개발 서버 (Turbopack), http://localhost:3000
+npm run build   # 프로덕션 빌드 + 타입 체크
+npm run start   # 프로덕션 서버 실행
+npm run lint    # ESLint 검사
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+테스트 러너는 아직 구성되어 있지 않습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 개발 상태
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+현재는 Next.js + Tailwind v4 + shadcn/ui + Zustand + React Hook Form/Zod가 세팅된 스타터 상태이며, PRD에 정의된 로그인/대시보드/노션 연동/견적서 공유 기능은 아직 구현 전입니다. `src/components/examples/`, `src/store/use-counter-store.ts`는 실제 기능 구현 시 참고할 Zustand/폼 패턴 예제로 유지하고 있습니다.
 
-## Learn More
+## 문서
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [`docs/PRD.md`](./docs/PRD.md) — 견적서 웹뷰어 MVP PRD (기능 명세, 페이지별 상세, 데이터 모델 등)
+- [`CLAUDE.md`](./CLAUDE.md) — 저장소 아키텍처/컨벤션 가이드
+- [`AGENTS.md`](./AGENTS.md) — Next.js가 자동 생성하는 안내 파일 (수동 수정 금지)

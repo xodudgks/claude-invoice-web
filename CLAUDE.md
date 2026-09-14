@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+노션에 입력한 견적서를 클라이언트가 로그인 없이 웹에서 확인/다운로드하도록 하는 "견적서 웹뷰어" 서비스입니다. 자세한 기획은 @docs/PRD.md 참조.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 @AGENTS.md
